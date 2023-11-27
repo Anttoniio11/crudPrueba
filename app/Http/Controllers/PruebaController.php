@@ -14,6 +14,7 @@ public function indeX(){
     return view("welcome")->with('datos', $datos);
 }
 
+//Añadir
 public function create(Request $request){
     try {
         $sql=DB::insert('insert into datos(id,descripcion,fecha)values(?,?,?)',[
@@ -31,6 +32,7 @@ public function create(Request $request){
     }
 }
 
+//Modificar
 public function update(Request $request){
     try {
         $sql=DB::insert('update datos set descripcion=?,fecha=? where id=?',[
@@ -53,6 +55,7 @@ public function update(Request $request){
     }
 }
 
+//Eliminar
 public function delete($id){
     try {
         $sql=DB::delete(" delete from datos where id=$id");
@@ -62,7 +65,7 @@ public function delete($id){
     if ($sql == true) {
         return back()->with('Correcto','Eliminado correctamente');
     } else {
-        return back()->with('Inorrecto',"Error al eliminar");
+        return back()->with('Inorrecto','Error al eliminar');
     }
 }
 
